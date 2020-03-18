@@ -14,7 +14,7 @@
                    value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
         </layout>
     </appender>
-    <logger name="com.aexp.blaze.bloom">
+    <logger name="com.americanexpress.bloom">
         <level value="trace"/>
     </logger>
 

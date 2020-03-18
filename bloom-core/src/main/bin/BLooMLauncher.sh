@@ -112,7 +112,7 @@ fi
 #email "testing email functionality"
 if [ -f "${APP_HOME}/${APP_FILE}" ]; then
     mailContent=`cat ${APP_HOME}/${APP_FILE}`
-    app_data=`${JAVA_HOME}/bin/java  -DJOB=velocity -DAPP_HOME=${APP_HOME} -classpath "${APP_JAR}:${JAVA_CLASSPATH}" com.aexp.blaze.bloom.util.VelocityUtils OBJ "JobDetails" "${APP_HOME}/${APP_FILE}"`
+    app_data=`${JAVA_HOME}/bin/java  -DJOB=velocity -DAPP_HOME=${APP_HOME} -classpath "${APP_JAR}:${JAVA_CLASSPATH}" com.americanexpress.bloom.util.VelocityUtils OBJ "JobDetails" "${APP_HOME}/${APP_FILE}"`
     hadoop fs -rm "${APP_HOME}/${APP_FILE}"
     email "${app_data}"
 fi
