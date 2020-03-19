@@ -5,6 +5,8 @@
 
 ## BLooM is a configuration driven bigdata based framework to load massive data into [MemSQL Database](https://www.memsql.com/).
 
+![Build](https://travis-ci.org/americanexpress/bloom.svg?branch=master)
+
 ### Features -->
 
 - Blazing performance 50 Millions records loaded in [MemSQL Database](https://www.memsql.com/) in 90 Seconds leveraging [Apache Spark](https://spark.apache.org/).
