@@ -10,11 +10,11 @@ jdk:
   - oraclejdk9
 
 script:
-  - mvn clean install
+  - mvn clean install -DskipTests=true
 
 deploy:
   provider: script
-  script: mvn clean deploy --settings=".travis.settings.xml"
+  script: mvn clean deploy -DskipTests=true --settings=".travis.settings.xml"
   on:
     tags: true
     jdk: oraclejdk8
