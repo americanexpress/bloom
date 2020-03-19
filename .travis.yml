@@ -6,8 +6,7 @@ cache:
 
 jdk:
   - openjdk8
-  - oraclejdk8
-  - oraclejdk9
+
 
 script:
   - mvn clean install -DskipTests=true
@@ -17,4 +16,4 @@ deploy:
   script: mvn clean deploy -DskipTests=true --settings=".travis.settings.xml"
   on:
     tags: true
-    jdk: oraclejdk8
+    jdk: openjdk8
