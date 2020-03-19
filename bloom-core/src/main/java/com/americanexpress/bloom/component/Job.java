@@ -209,7 +209,7 @@ public class Job {
             javaMemSQLDao.save();
         }
 
-        //set the details so that it can saved in the mbl_job_history table
+        //set the details so that it can saved in the bloom_job_history table
         this.jobDetails.setInputRecordsCount(Long.toString(recordCount));
         this.jobDetails.setProcessedRecordsCount(Long.toString(proccessedRecordCount));
 
@@ -277,7 +277,7 @@ public class Job {
     }
 
     /**
-     * Get the proper processor -FULL_REFRESH and UPSERT
+     * Get the proper processor -FULL_REFRESH, Load Append and UPSERT
      *
      * @param refreshType
      * @return
@@ -295,15 +295,15 @@ public class Job {
     }
 
     /***
-     * Method is used to save the job history in the mbl_job_history table
+     * Method is used to save the job history in the bloom_job_history table
      * @throws BloomException
      */
     public void saveJobDetails() throws BloomException {
-        LOGGER.info("Saving Job Details in mbl_job_history table");
+        LOGGER.info("Saving Job Details in bloom_job_history table");
         Encoder<JobDetails> jobDetailsEncoder = Encoders.bean(JobDetails.class);
         if (this.sparkSession != null) {
             Dataset<JobDetails> jobDetailsDataset = this.sparkSession.createDataset(Collections.singletonList(jobDetails), jobDetailsEncoder);
-            this.sparkMemSQLDao.save(jobDetailsDataset, "mbl_job_history", "overwrite");
+            this.sparkMemSQLDao.save(jobDetailsDataset, "bloom_job_history", "overwrite");
         }
     }
 }
