@@ -174,7 +174,7 @@ public class Job {
             throw new BloomException("No Input record found ", ErrorCodes.MBL_CSV_READER_FAILED);
 
         }
-        //converts the incoming timestamp column to standard cornerstone timestamp format
+        //converts the incoming timestamp column to standard timestamp format
         inputDataSet = standardizeTimestampFormat(inputDataSet, entitySchema);
 
         processor = getProcessorForRefreshType(refreshType, tableType);
@@ -262,7 +262,7 @@ public class Job {
     }
 
     /**
-     * Standardises primary key column by coverting them to upper case
+     * Standardises primary key column by converting them to upper case
      *
      * @param inputDataSet
      * @param entitySchema
@@ -277,7 +277,7 @@ public class Job {
     }
 
     /**
-     * Get the proper processor -FULL_REFRESH, Load Append and UPSERT
+     * Get the proper processor - FULL_REFRESH, Load Append and UPSERT
      *
      * @param refreshType
      * @return

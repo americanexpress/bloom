@@ -30,7 +30,7 @@ import java.util.List;
 
 
 /**
- * Class to generate schema by reading the configured POJO using reflection
+ * Class to generate schema by reading the configured yaml
  */
 
 public class SchemaGenerator {
@@ -74,7 +74,6 @@ public class SchemaGenerator {
             validateHiveColumns(appConfig.getMemSQLTableConf().getInputMemSQLTableColumnNames(), inpuFieldNames);
         }
 
-        //validateInputHeaderFields(dtoFieldsList,inpuFieldNames);
         StructType schema = DataTypes.createStructType(inputFields);
         entitySchema.setDtoFieldsSchema(schema);
         entitySchema.setInputFieldsSchema(generateInputFieldsSchema(inpuFieldNames, appConfig.getMemSQLTableConf()));

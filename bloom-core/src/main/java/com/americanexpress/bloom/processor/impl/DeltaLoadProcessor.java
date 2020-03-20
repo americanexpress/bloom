@@ -28,8 +28,8 @@ import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.catalyst.encoders.RowEncoder;
 
 /***
- * This class is used for refresh type -UPSERT. It validates the timestamp of
- * the incoming record and acordingly create the final datase which can be later saved
+ * This class is used for refresh type - UPSERT. It validates the timestamp of
+ * the incoming record and accordingly create the final dataset which can be later saved
  */
 public class DeltaLoadProcessor extends Processor {
 
