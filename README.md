@@ -16,7 +16,12 @@
 - supports processing multiple files in a directory.
 - There are three **types of modes** to run the framework:    
     - **Full load (full refresh)**: It does not check if any records already exists in MemSQL and it just directly loads all the data and overwrites the old data if any. In case the data file has records for only a few columns of the table, the remaining columns are loaded as null.
-    - **Delta load (upsert)**: It checks if the record already exists in the MemSQL and if the incoming record is later than the existing one, based on last updated timestamp, then it only makes an upsert, else it ignores the update. For a Delta Load also, the input file can have data for all the columns or for a few columns only. In-case the input has data only for a few columns and the same record is not present already, it inserts the incoming columns and null for the remaining columns. In-case the record already exists but is older, it updates the incoming columns.
+    - **Delta load (upsert/update)**: 
+        - If the incoming record is newer than the existing one, based on last updated timestamp, then it only makes an UPDATE on DB. 
+        - If the record is older then it ignores the update. 
+        - The input file can have data for all the columns or for a few columns only. 
+        - If the input has data only for a few columns and the same record is not present already, it inserts the incoming columns and null for the remaining columns. 
+        - If the incoming record is older and mandatory columns are configured, then it does an UPSERT of those mandatory columns into DB and keep the other columns intact.
     - **Load Append**: It does not check if any records already exists in MemSQL and just appends the incoming data to the existing data. This mode is only supported for columnstore tables.
 
 - It can accept config yaml about an input file / hive table from where data needs to be loaded in MemSQL
